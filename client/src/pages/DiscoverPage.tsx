@@ -9,9 +9,12 @@ import {
   ToggleButton,
   Chip,
   Stack,
+  Tooltip,
+  IconButton,
 } from '@mui/material'
-import { Search, Whatshot, AccessTime, Favorite } from '@mui/icons-material'
+import { Search, Whatshot, AccessTime, Favorite, GridView, CameraRoll } from '@mui/icons-material'
 import MasonryGrid from '@/features/discovery/components/MasonryGrid'
+import PolaroidGrid from '@/features/discovery/components/PolaroidGrid'
 import PhotoLightbox from '@/features/discovery/components/PhotoLightbox'
 import { useMasonryPhotos } from '@/features/discovery/hooks/useMasonryPhotos'
 import type { Photo } from '@/types/photo'
@@ -25,6 +28,7 @@ export default function DiscoverPage() {
   const [sortMode, setSortMode] = useState<SortMode>('trending')
   const [activeTag, setActiveTag] = useState<string | null>(null)
   const [lightboxPhoto, setLightboxPhoto] = useState<Photo | null>(null)
+  const [polaroidMode, setPolaroidMode] = useState(false)
 
   const { photos, isLoading, isFetchingMore, hasMore, sentinelRef } = useMasonryPhotos()
 
@@ -95,6 +99,12 @@ export default function DiscoverPage() {
           }}
         />
 
+        <Tooltip title={polaroidMode ? 'Grid view' : 'Polaroid view'}>
+          <IconButton onClick={() => setPolaroidMode((p) => !p)} color={polaroidMode ? 'secondary' : 'default'} aria-label="Toggle polaroid mode">
+            {polaroidMode ? <GridView /> : <CameraRoll />}
+          </IconButton>
+        </Tooltip>
+
         <ToggleButtonGroup
           value={sortMode}
           exclusive
@@ -143,15 +153,19 @@ export default function DiscoverPage() {
         </Typography>
       )}
 
-      {/* Masonry Grid */}
-      <MasonryGrid
-        photos={filteredPhotos}
-        isLoading={isLoading}
-        isFetchingMore={isFetchingMore}
-        hasMore={hasMore}
-        sentinelRef={sentinelRef}
-        onPhotoClick={setLightboxPhoto}
-      />
+      {/* Grid — Masonry or Polaroid */}
+      {polaroidMode ? (
+        <PolaroidGrid photos={filteredPhotos} onPhotoClick={setLightboxPhoto} />
+      ) : (
+        <MasonryGrid
+          photos={filteredPhotos}
+          isLoading={isLoading}
+          isFetchingMore={isFetchingMore}
+          hasMore={hasMore}
+          sentinelRef={sentinelRef}
+          onPhotoClick={setLightboxPhoto}
+        />
+      )}
 
       {/* Lightbox */}
       <PhotoLightbox

@@ -1,3 +1,4 @@
+import http from 'http'
 import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
@@ -10,6 +11,7 @@ import path from 'path'
 
 import { env } from './config/env'
 import { connectDB } from './config/database'
+import { initSocket } from './socket'
 import { connectRedis } from './config/redis'
 import apiRouter from './routes/index'
 import { errorHandler } from './middlewares/errorHandler'
@@ -71,7 +73,10 @@ async function start() {
     console.warn('[Redis] Could not connect — running without cache')
   }
 
-  app.listen(env.PORT, () => {
+  const httpServer = http.createServer(app)
+  initSocket(httpServer)
+
+  httpServer.listen(env.PORT, () => {
     console.log(`[Server] Running on http://localhost:${env.PORT}`)
     console.log(`[Docs]   Swagger UI → http://localhost:${env.PORT}/api-docs`)
   })

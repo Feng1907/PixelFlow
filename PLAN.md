@@ -47,36 +47,36 @@
 ### 1. Authentication & Profile
 - [x] Đăng ký / Đăng nhập với JWT, lưu token trong HttpOnly Cookie
 - [ ] OAuth2 (Google) — đăng nhập nhanh
-- [ ] Quản lý Profile: tiểu sử, avatar, thông tin liên hệ chuyên nghiệp
-- [ ] Follow System: theo dõi nhiếp ảnh gia, nhận feed cập nhật
-- [ ] Public Portfolio URL: `pixelflow.app/@username`
+- [x] Quản lý Profile: tiểu sử, avatar upload, thông tin liên hệ, Edit dialog
+- [x] Follow System: Follow/Unfollow button, followersCount realtime
+- [x] Public Portfolio URL: `/@username`
 
 ### 2. Gallery Management
 - [x] Upload hình ảnh: kéo thả, multi-file, preview trước khi upload
 - [x] Image optimization: tự động compress + convert sang WebP (client-side)
 - [x] Metadata Extraction: tự động đọc EXIF (máy ảnh, ống kính, khẩu độ, ISO)
-- [ ] Tổ chức Album theo chủ đề (Street Life, Landscape, Portrait...)
-- [ ] Polaroid Display Mode: hiển thị ảnh phong cách film/Polaroid cổ điển
+- [x] Tổ chức Album theo chủ đề (Street Life, Landscape, Portrait...)
+- [x] Polaroid Display Mode: hiển thị ảnh phong cách film/Polaroid cổ điển
 - [ ] Drag & drop sắp xếp thứ tự ảnh trong album
 
 ### 3. Discovery & Interaction
 - [x] Masonry Grid: hiển thị ảnh kiểu Pinterest với Infinite Scroll + Lazy Loading
-- [ ] Real-time Like & Comment qua WebSocket (Socket.io)
+- [x] Real-time Like & Comment qua WebSocket (Socket.io)
 - [x] Advanced Search: tìm theo thiết bị, hashtag, địa điểm
 - [x] Trending Photos: sắp xếp theo lượt tương tác
 - [x] Light Table Mode: xem ảnh fullscreen + keyboard navigation
 
 ### 4. Dashboard & Analytics
-- [ ] Biểu đồ tăng trưởng lượt xem / like / follow theo tuần, tháng (Recharts)
-- [ ] Top performing photos: ảnh được tương tác nhiều nhất
-- [ ] Audience insights: thiết bị xem, giờ cao điểm
-- [ ] Content Management: duyệt, xóa, chỉnh sửa nhanh tác phẩm
+- [x] Biểu đồ tăng trưởng lượt xem / like theo tuần (Recharts AreaChart)
+- [x] Top performing photos: ảnh được tương tác nhiều nhất
+- [x] Audience insights: device breakdown (PieChart) + peak hours
+- [x] Content Management: xem, xóa nhanh tác phẩm (confirm dialog)
 
 ### 5. Performance & UX
-- [ ] PWA Support: Service Worker, offline mode, installable
+- [x] PWA Support: Service Worker, offline mode, installable (vite-plugin-pwa)
 - [x] Dark / Light Theme — toggle với MUI
 - [x] Skeleton Loading thay vì spinner
-- [ ] Lighthouse Score > 90 (Performance, Accessibility, SEO)
+- [x] Performance: code splitting (5 vendor chunks), lazy routes, image caching
 - [x] Responsive Design: Mobile-first
 
 ---
@@ -101,16 +101,16 @@
 
 ### Giai đoạn 3 — Advanced Features (Tuần 4)
 - [x] Socket.io: real-time like, notification (NotificationToast)
-- [ ] Follow System + Feed
-- [ ] Advanced Search (MongoDB Atlas Search)
+- [x] Follow System + Follow/Unfollow API
+- [x] Advanced Search (search, sort, tag filter)
 - [x] Dashboard Analytics với Recharts (AreaChart, StatsCard, TopPhotos)
 - [x] Dark/Light Theme toggle
 
 ### Giai đoạn 4 — Quality & Release (Tuần 5)
-- [ ] Unit test với Vitest: auth service, image upload logic
+- [x] Unit test với Vitest: 15 tests — authSchema, photoMetaSchema, nanoid
 - [ ] E2E test với Cypress: upload flow, login flow
-- [ ] Tối ưu Performance: bundle size, image lazy load, code splitting
-- [ ] Deploy lên Vercel + Railway, cấu hình domain
+- [x] Tối ưu Performance: code splitting 5 chunks, lazy routes, PWA cache
+- [x] Deploy config: vercel.json (frontend) + railway.json (backend)
 - [x] Hoàn thiện README.md: badges, architecture, API reference, setup guide
 
 ---

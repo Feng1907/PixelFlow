@@ -21,6 +21,7 @@ import {
 } from '@mui/icons-material'
 import { useState, useEffect, useCallback } from 'react'
 import type { Photo } from '@/types/photo'
+import CommentSection from './CommentSection'
 
 interface PhotoLightboxProps {
   photo: Photo | null
@@ -274,6 +275,13 @@ export default function PhotoLightbox({
               ))}
             </Box>
           )}
+
+          <Divider />
+
+          {/* Comments */}
+          <Box sx={{ flex: 1, minHeight: 180 }}>
+            <CommentSection photoId={photo._id} initialCount={photo.commentsCount} />
+          </Box>
         </Box>
       </DialogContent>
     </Dialog>

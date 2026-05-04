@@ -9,6 +9,7 @@ import {
   Skeleton,
   Chip,
   Divider,
+  CircularProgress,
 } from '@mui/material'
 import {
   Edit,
@@ -17,7 +18,9 @@ import {
   PhotoLibrary,
   PeopleAlt,
   PersonAdd,
+  PersonRemove,
 } from '@mui/icons-material'
+import { useFollow } from '../hooks/useFollow'
 import type { User } from '@/types/user'
 import { useAppSelector } from '@/store'
 import { useUploadAvatar } from '../hooks/useProfile'
@@ -35,6 +38,8 @@ export default function ProfileHeader({ user, isLoading }: ProfileHeaderProps) {
   const { mutate: uploadAvatar, isPending: uploadingAvatar } = useUploadAvatar()
 
   const isOwner = currentUser?._id === user._id
+  const { mutate: toggleFollow, isPending: followPending, data: followData } = useFollow(user.username)
+  const isFollowing = followData?.following ?? false
 
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -162,12 +167,16 @@ export default function ProfileHeader({ user, isLoading }: ProfileHeaderProps) {
               </Button>
             ) : (
               <Button
-                variant="contained"
+                variant={isFollowing ? 'outlined' : 'contained'}
                 color="secondary"
-                startIcon={<PersonAdd />}
+                startIcon={followPending
+                  ? <CircularProgress size={14} color="inherit" />
+                  : isFollowing ? <PersonRemove /> : <PersonAdd />}
                 size="small"
+                onClick={() => toggleFollow()}
+                disabled={followPending}
               >
-                Follow
+                {isFollowing ? 'Unfollow' : 'Follow'}
               </Button>
             )}
           </Box>
