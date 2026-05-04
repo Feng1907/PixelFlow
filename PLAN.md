@@ -86,25 +86,25 @@
 ### Giai đoạn 1 — Setup & Foundation (Tuần 1)
 - [x] Khởi tạo monorepo: `client/` (React + Vite + TS) và `server/` (Express + TS)
 - [x] Cấu hình ESLint, Prettier, Husky, lint-staged
-- [ ] Setup Docker + docker-compose cho local dev (MongoDB, Redis)
-- [ ] Thiết kế MongoDB Schema: User, Photo, Album, Comment, Like, Follow
+- [x] Setup Docker + docker-compose cho local dev (MongoDB, Redis)
+- [x] Thiết kế MongoDB Schema: User, Photo, Album
 - [x] Cấu hình GitHub Actions: CI pipeline (lint + test on PR)
-- [ ] Khởi tạo Swagger docs skeleton
+- [x] Khởi tạo Swagger docs skeleton (OpenAPI 3.0)
 
 ### Giai đoạn 2 — Core Features (Tuần 2-3)
 - [x] Auth flow: Register, Login, Logout, refresh token
 - [x] Upload flow: drag & drop, compress WebP, preview, metadata form
 - [x] EXIF extraction khi upload (camera, lens, aperture, ISO)
 - [x] Masonry Grid với Infinite Scroll và Lazy Loading
-- [ ] Upload lên Cloudinary + lưu vào MongoDB (cần Backend)
+- [x] Upload lên Cloudinary + lưu metadata vào MongoDB
 - [ ] Profile page + Public Portfolio URL
 
 ### Giai đoạn 3 — Advanced Features (Tuần 4)
 - [ ] Socket.io: real-time like, comment, notification
 - [ ] Follow System + Feed
-- [ ] Advanced Search (Elasticsearch hoặc MongoDB Atlas Search)
+- [ ] Advanced Search (MongoDB Atlas Search)
 - [ ] Dashboard Analytics với Recharts
-- [x] Dark/Light Theme, PWA manifest
+- [x] Dark/Light Theme toggle
 
 ### Giai đoạn 4 — Quality & Release (Tuần 5)
 - [ ] Unit test với Vitest: auth service, image upload logic
