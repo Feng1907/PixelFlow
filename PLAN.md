@@ -97,13 +97,13 @@
 - [x] EXIF extraction khi upload (camera, lens, aperture, ISO)
 - [x] Masonry Grid với Infinite Scroll và Lazy Loading
 - [x] Upload lên Cloudinary + lưu metadata vào MongoDB
-- [ ] Profile page + Public Portfolio URL
+- [x] Profile page + Public Portfolio URL (`/@username`)
 
 ### Giai đoạn 3 — Advanced Features (Tuần 4)
-- [ ] Socket.io: real-time like, comment, notification
+- [x] Socket.io: real-time like, notification (NotificationToast)
 - [ ] Follow System + Feed
 - [ ] Advanced Search (MongoDB Atlas Search)
-- [ ] Dashboard Analytics với Recharts
+- [x] Dashboard Analytics với Recharts (AreaChart, StatsCard, TopPhotos)
 - [x] Dark/Light Theme toggle
 
 ### Giai đoạn 4 — Quality & Release (Tuần 5)
@@ -111,7 +111,7 @@
 - [ ] E2E test với Cypress: upload flow, login flow
 - [ ] Tối ưu Performance: bundle size, image lazy load, code splitting
 - [ ] Deploy lên Vercel + Railway, cấu hình domain
-- [ ] Hoàn thiện README.md: screenshots, GIF demo, architecture diagram, setup guide
+- [x] Hoàn thiện README.md: badges, architecture, API reference, setup guide
 
 ---
 
